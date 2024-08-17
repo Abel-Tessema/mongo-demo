@@ -49,8 +49,8 @@ async function getCourses() {
     
     .limit(2)
     .sort({name: 1})
-    .select({name: 1, tags: 1});
-  console.log(courses)
+    .countDocuments();
+  console.log(courses);
 }
 
 getCourses();
