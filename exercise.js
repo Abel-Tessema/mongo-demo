@@ -23,5 +23,20 @@ async function getCourses() {
     .select('name author price');
 }
 
-getCourses()
-  .then(courses => console.log('Courses:\n', courses));
+async function updateCourse(id) {
+  const course = await Course.findById(id);
+  if (!course) return;
+  
+  course.set({
+    isPublished: false,
+    author: 'Bela'
+  });
+  
+  const result = await course.save();
+  console.log('Result:\n', result);
+}
+
+// getCourses()
+//   .then(courses => console.log('Courses:\n', courses));
+
+updateCourse('64d2f6b1c9a1b2c3d4e5f6a7');
