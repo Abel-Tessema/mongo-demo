@@ -27,27 +27,13 @@ async function createCourse() {
 }
 
 async function getCourses() {
-  // eq = equal
-  // ne = not equal
-  // gt = greater than
-  // gte = greater than or equal to
-  // lt = less than
-  // lte = less than or equal to
-  // in = in
-  // nin = not in
+  const pageNumber = 2;
+  const pageSize = 10;
+  
   const courses = await Course
-    // .find({author: 'Bela Jash', isPublished: true})
-    
-    // Starts with 'Bela', and case-insensitive
-    .find({author: /^Bela/i})
-    
-    // Ends with 'Jash'
-    .find({author: /Jash$/})
-    
-    // Contains 'Bela'
-    .find({author: /.*Bela.*/})
-    
-    .limit(2)
+    .find({author: 'Bela Jash', isPublished: true})
+    .skip((pageNumber - 1) * pageSize)
+    .limit(pageSize)
     .sort({name: 1})
     .countDocuments();
   console.log(courses);
