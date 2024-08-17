@@ -37,9 +37,16 @@ async function getCourses() {
   // nin = not in
   const courses = await Course
     // .find({author: 'Bela Jash', isPublished: true})
-    .find()
-    .or([{author: 'Bela Jash'}, {isPublished: true}])
-    .and([])
+    
+    // Starts with 'Bela', and case-insensitive
+    .find({author: /^Bela/i})
+    
+    // Ends with 'Jash'
+    .find({author: /Jash$/})
+    
+    // Contains 'Bela'
+    .find({author: /.*Bela.*/})
+    
     .limit(2)
     .sort({name: 1})
     .select({name: 1, tags: 1});
