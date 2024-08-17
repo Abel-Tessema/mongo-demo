@@ -17,10 +17,10 @@ const Course = mongoose.model('Course', courseSchema);
 
 async function getCourses() {
   return Course
-    .find({isPublished: true, tags: {$all: ['backend']}}) // Looks for results that contain all the tags.
-    // .find({isPublished: true, tags: {$in: ['backend', 'node']}}) // Looks for results that contain at least one of the tags.
-    .sort({name: 1})
-    .select({name: 1, author: 1});
+    .find({isPublished: true, tags: {$in: ['frontend', 'backend']}})
+    // .or([{tags: 'frontend'}, {tags: 'backend'}])
+    .sort('-price')
+    .select('name author price');
 }
 
 getCourses()
