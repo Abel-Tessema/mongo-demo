@@ -7,13 +7,29 @@ mongoose.connect('mongodb://localhost/mongo-exercises')
 const courseSchema = new mongoose.Schema({
   tags: [String],
   date: {type: Date, default: Date.now},
-  name: String,
+  name: {type: String, required: true},
   author: String,
   isPublished: Boolean,
   price: Number
 });
 
 const Course = mongoose.model('Course', courseSchema);
+
+async function createCourse() {
+  const course = new Course({
+    name: 'Accounting Basics',
+    tags: ['accounting', 'finance'],
+    author: 'Accounting Stuff',
+    isPublished: true,
+    price: 21
+  });
+  try {
+    const result = await course.save();
+    console.log(result);
+  } catch (e) {
+    console.log(e.message);
+  }
+}
 
 async function getCourses() {
   return Course
@@ -45,4 +61,6 @@ async function removeCourse(id) {
 // getCourses()
 //   .then(courses => console.log('Courses:\n', courses));
 
-removeCourse('64d2f6b1c9a1b2c3d4e5f6a7');
+// removeCourse('64d2f6b1c9a1b2c3d4e5f6a7');
+
+createCourse();
