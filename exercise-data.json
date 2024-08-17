@@ -1,0 +1,72 @@
+[
+  {
+    "_id": "64d2f6b1c9a1b2c3d4e5f6a7",
+    "tags": ["node", "backend"],
+    "date": "2024-08-03T08:00:00Z",
+    "name": "The Complete Node.js Course",
+    "author": "Mosh",
+    "isPublished": true,
+    "price": 15,
+    "__v": 0
+  },
+  {
+    "_id": "74d2f6b1c9a1b2c3d4e5f6a8",
+    "tags": ["react", "frontend"],
+    "date": "2024-08-03T08:00:00Z",
+    "name": "Mastering React",
+    "author": "Mosh",
+    "isPublished": false,
+    "price": 20,
+    "__v": 0
+  },
+  {
+    "_id": "84d2f6b1c9a1b2c3d4e5f6a9",
+    "tags": ["angular", "frontend"],
+    "date": "2024-08-03T08:00:00Z",
+    "name": "Angular - The Complete Guide",
+    "author": "Mosh",
+    "isPublished": true,
+    "price": 10,
+    "__v": 0
+  },
+  {
+    "_id": "94d2f6b1c9a1b2c3d4e5f6b0",
+    "tags": ["vue", "frontend"],
+    "date": "2024-08-03T08:00:00Z",
+    "name": "Vue.js Essentials",
+    "author": "Mosh",
+    "isPublished": false,
+    "price": 25,
+    "__v": 0
+  },
+  {
+    "_id": "a4d2f6b1c9a1b2c3d4e5f6b1",
+    "tags": ["express", "backend"],
+    "date": "2024-08-03T08:00:00Z",
+    "name": "Express.js Fundamentals",
+    "author": "Mosh",
+    "isPublished": true,
+    "price": 30,
+    "__v": 0
+  },
+  {
+    "_id": "b4d2f6b1c9a1b2c3d4e5f6b2",
+    "tags": ["mongodb", "database"],
+    "date": "2024-08-03T08:00:00Z",
+    "name": "Mastering MongoDB",
+    "author": "Mosh",
+    "isPublished": false,
+    "price": 18,
+    "__v": 0
+  },
+  {
+    "_id": "c4d2f6b1c9a1b2c3d4e5f6b3",
+    "tags": ["graphql", "api"],
+    "date": "2024-08-03T08:00:00Z",
+    "name": "GraphQL - The Complete Guide",
+    "author": "Mosh",
+    "isPublished": true,
+    "price": 22,
+    "__v": 0
+  }
+]
