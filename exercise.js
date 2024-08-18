@@ -47,7 +47,7 @@ const Course = mongoose.model('Course', courseSchema);
 async function createCourse() {
   const course = new Course({
     name: 'Accounting Basics',
-    category: 'web',
+    category: '-',
     tags: null,
     author: 'Accounting Stuff',
     isPublished: true,
@@ -57,7 +57,10 @@ async function createCourse() {
     const result = await course.save();
     console.log(result);
   } catch (e) {
-    console.log(e.message);
+    // console.log(e);
+    for (let field in e.errors)
+      // console.log(e.errors[field].properties.message);
+      console.log(e.errors[field].message);
   }
 }
 
