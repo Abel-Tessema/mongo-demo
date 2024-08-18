@@ -8,7 +8,14 @@ const courseSchema = new mongoose.Schema({
   tags: {
     type: [String],
     validate: {
-      validator: function(value) {return value && value.length > 0},
+      validator: function(value, callback) {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            const result = value && value.length > 0;
+            resolve(result);
+          }, 2_000);
+        });
+      },
       message: 'A course should have at least one tag.'
     }
   },
