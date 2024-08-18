@@ -7,10 +7,26 @@ mongoose.connect('mongodb://localhost/mongo-exercises')
 const courseSchema = new mongoose.Schema({
   tags: [String],
   date: {type: Date, default: Date.now},
-  name: {type: String, required: true},
+  name: {
+    type: String,
+    required: true,
+    minlength: 5,
+    maxlength: 255,
+    // match: /pattern/
+  },
+  category: {
+    type: String,
+    required: true,
+    enum: ['web', 'mobile', 'network']
+  },
   author: String,
   isPublished: Boolean,
-  price: Number
+  price: {
+    type: Number,
+    required: function() {return this.isPublished;},
+    min: 10,
+    max: 200
+  }
 });
 
 const Course = mongoose.model('Course', courseSchema);
@@ -18,6 +34,7 @@ const Course = mongoose.model('Course', courseSchema);
 async function createCourse() {
   const course = new Course({
     name: 'Accounting Basics',
+    category: '-',
     tags: ['accounting', 'finance'],
     author: 'Accounting Stuff',
     isPublished: true,
