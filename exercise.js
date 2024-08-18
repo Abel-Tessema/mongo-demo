@@ -30,7 +30,10 @@ const courseSchema = new mongoose.Schema({
   category: {
     type: String,
     required: true,
-    enum: ['web', 'mobile', 'network']
+    enum: ['web', 'mobile', 'network'],
+    lowercase: true,
+    // uppercase: true,
+    trim: true
   },
   author: String,
   isPublished: Boolean,
@@ -38,7 +41,9 @@ const courseSchema = new mongoose.Schema({
     type: Number,
     required: function() {return this.isPublished;},
     min: 10,
-    max: 200
+    max: 200,
+    get: value => Math.round(value),
+    set: value => Math.round(value)
   }
 });
 
@@ -47,11 +52,11 @@ const Course = mongoose.model('Course', courseSchema);
 async function createCourse() {
   const course = new Course({
     name: 'Accounting Basics',
-    category: '-',
-    tags: null,
+    category: 'wEb',
+    tags: ['accounting', 'finance'],
     author: 'Accounting Stuff',
     isPublished: true,
-    price: 21
+    price: 21.5
   });
   try {
     const result = await course.save();
