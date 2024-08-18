@@ -5,7 +5,13 @@ mongoose.connect('mongodb://localhost/mongo-exercises')
   .catch((error) => console.error('Could not connect to MongoDB.', error));
 
 const courseSchema = new mongoose.Schema({
-  tags: [String],
+  tags: {
+    type: [String],
+    validate: {
+      validator: function(value) {return value && value.length > 0},
+      message: 'A course should have at least one tag.'
+    }
+  },
   date: {type: Date, default: Date.now},
   name: {
     type: String,
@@ -34,8 +40,8 @@ const Course = mongoose.model('Course', courseSchema);
 async function createCourse() {
   const course = new Course({
     name: 'Accounting Basics',
-    category: '-',
-    tags: ['accounting', 'finance'],
+    category: 'web',
+    tags: null,
     author: 'Accounting Stuff',
     isPublished: true,
     price: 21
