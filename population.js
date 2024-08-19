@@ -31,12 +31,15 @@ async function createCourse(name, author) {
 }
 
 async function listCourses() {
-  const courses = await Course.find().select('name');
+  const courses = await Course
+    .find()
+    .populate('author', 'name -_id')
+    .select('name author -_id');
   console.log(courses);
 }
 
 // createAuthor('Bela', 'My bio', 'My website');
 
-createCourse('Node Course', '66c300850ba73952c9c3c863');
+// createCourse('Node Course', '66c300850ba73952c9c3c863');
 
-// listCourses();
+listCourses();
